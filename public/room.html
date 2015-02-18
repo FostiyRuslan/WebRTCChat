@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <%- include('templates/styles.html') %>
+</head>
+<body>
+<%- include('templates/header.html') %>
+<main id="wrapper">
+    <div class="row">
+        <div class="col-xs-12 col-md-8 video-frame">
+            <div class="col-xs-10 col-md-8 local-video-stream-container">
+                <video class="local-video-stream"></video>
+            </div>
+            <div class="col-xs-4 col-md-4 remote-video-stream-container">
+
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-4 participate-frame">
+            <button class="btn btn-primary particippates-amount" type="button">
+                Participates <span class="badge">0</span>
+            </button>
+            <button id="offer" class="btn btn-success btn-fab btn-raised mdi-action-settings-phone"></button>
+            <div class="clear"></div>
+            <ul class="list-group participates">
+                <li class="list-group-item">Empty room</li>
+            </ul>
+            <label for="text-chat">Chat</label>
+            <textarea class="form-control" rows="3" id="text-chat"></textarea>
+        </div>
+    </div>
+</main>
+<%- include('templates/footer.html') %>
+<%- include('templates/scripts.html') %>
+</body>
+</html>
