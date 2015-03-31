@@ -1,6 +1,6 @@
-var passport = require('passport');
-
 var AuthController = function(eventEmitter){
+    var db = require('mongoose-simpledb').db;
+    var UserModel = require('../models/UserModel')(db);
 
     function authorizationFailed(req, res) {
         res.redirect('/login');
@@ -11,14 +11,24 @@ var AuthController = function(eventEmitter){
     }
 
     function login(req, res) {
-        var login = req.body.login,
-            password = req.body.password;
-
+        res.end();
     }
 
     function registration(req, res) {
-        var login = req.body.login,
-            password = req.body.password;
+        var user = {
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            email: req.body.email,
+            password: req.body.password
+        };
+
+        UserModel.save(user, function (err, user) {
+            if (err) {
+                res.status(400).end();
+                return;
+            }
+            res.send(user.toJSON());
+        });
     }
 
     return {
